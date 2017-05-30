@@ -163,11 +163,13 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*
-         * Package Service Providers...
-         */
+        /* Package Service Providers...*/
         Laravel\Tinker\TinkerServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+
+        /* SleepingOwl Service Provider */
+        SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -177,6 +179,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
     
     //HTML&Forms
     Collective\Html\HtmlServiceProvider::class,
@@ -233,9 +236,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-    
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
         
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 
