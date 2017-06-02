@@ -17,7 +17,8 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name')->comment('наименование товара');
             $table->text('images')->comment('картинки товара');
-            $table->string('filter')->comment('фильтр товара');
+            $table->integer('category_id')->unsigned()->comment('id категории товара');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('price')->comment('цена товара');
             $table->timestamps();
         });
