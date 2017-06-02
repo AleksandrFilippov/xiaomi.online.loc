@@ -9,11 +9,12 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\PagesRequest;
 use Validator;
-use App\Portfolio;
+use App\Product;
 
 class PortfoliosEditController extends Controller
 {
-    public function execute(Portfolio $portfolio,Request $request) {
+    public function execute(Product $portfolio, Request $request)
+    {
 		
 		
 		if(!$portfolio) {

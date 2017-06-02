@@ -6,7 +6,7 @@ use App\Http\Requests;
 
 use App\Page;
 use App\Service;
-use App\Portfolio;
+use App\Product;
 use App\People;
 
 use App\Price;
@@ -58,7 +58,7 @@ class IndexController extends Controller
     	$pages = Page::all();
     	
     	//маршрут к Модели Portfolio
-    	$portfolios = Portfolio::all();/*get(array('name','filter','images','price'));*/
+        $portfolios = Product::all();/*get(array('name','filter','images','price'));*/
     	
     	//Переменная $tags фильтр для раздела Portfolio вытаскивает данные из таблицы БД portfolios
     	$tags = DB::table('portfolios')->distinct()->pluck('filter');

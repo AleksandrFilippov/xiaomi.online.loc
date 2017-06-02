@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Portfolio;
+use App\Product;
 use Validator;
 
 class PortfoliosAddController extends Controller
@@ -34,9 +34,9 @@ class PortfoliosAddController extends Controller
 	        $request->file('images')->move(public_path().'/assets/img',$file->getClientOriginalName());
 
 	       $input['images'] = $file->getClientOriginalName();
-	       
-	       
-	        $porfolio = new Portfolio();
+
+
+            $porfolio = new Product();
 	       // Page::unguard();
 	        $porfolio->fill($input);
 	        if($porfolio->save()) {
