@@ -28,3 +28,22 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
 
     ];
 });
+$factory->define(App\Page::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->unique()->word,
+        'alias' => $faker->unique()->slug,
+        'text' => $faker->text($maxNbChars = 50),
+        'images' => $faker->imageUrl($width = 200, $height = 200),
+
+    ];
+});
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
+    return [
+        'article' => $faker->unique()->word,
+        'name' => $faker->unique()->word,
+        'images' => $faker->imageUrl($width = 200, $height = 200),
+        'category_id' => $faker->unique()->word,
+        'price' => $faker->numberBetween($min = 800, $max = 2000),
+
+    ];
+});

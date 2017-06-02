@@ -15,6 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('article')->comment('артикул товара');
             $table->string('name')->comment('наименование товара');
             $table->text('images')->comment('картинки товара');
             $table->integer('category_id')->unsigned()->comment('id категории товара');
