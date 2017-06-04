@@ -32,7 +32,7 @@ $factory->define(App\Page::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'alias' => $faker->unique()->slug,
-        'text' => $faker->text($maxNbChars = 50),
+        'text' => $faker->paragraph(rand(5, 15)),
         'images' => $faker->imageUrl($width = 200, $height = 200),
 
     ];
