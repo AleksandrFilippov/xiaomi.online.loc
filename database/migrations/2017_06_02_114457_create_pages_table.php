@@ -19,6 +19,7 @@ class CreatePagesTable extends Migration
             $table->string('alias')->comment('псевданим страницы');
             $table->text('text')->comment('текст страницы');
             $table->text('images')->comment('картинки страницы');
+            $table->boolean('is_main')->default(false)->comment('Главная страницы');
             $table->timestamps();
         });
     }

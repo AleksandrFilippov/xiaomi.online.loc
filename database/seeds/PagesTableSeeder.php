@@ -11,6 +11,10 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
+        factory(\App\Page::class, 1)->create([
+            'is_main' => true,
+            'name' => 'Главная',
+        ]);
         factory(\App\Page::class, 2)->create();
     }
 }

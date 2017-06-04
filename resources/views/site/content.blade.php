@@ -3,7 +3,7 @@
 
 @foreach($pages as $k=>$page)
 
-	@if($k%2 == 0)
+    @if($page->isMain())
 		<section id="{{$page->alias}}" class="top_cont_outer">
 		  <div class="hero_wrapper">
 		    <div class="container">

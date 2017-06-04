@@ -34,6 +34,7 @@ $factory->define(App\Page::class, function (Faker\Generator $faker) {
         'alias' => $faker->unique()->slug,
         'text' => $faker->paragraph(rand(5, 15)),
         'images' => $faker->imageUrl($width = 200, $height = 200),
+        'is_main' => false,
 
     ];
 });
