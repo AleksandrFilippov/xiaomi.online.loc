@@ -16,7 +16,7 @@
 		            </div>
 		          </div>
 		          <div class="col-lg-7 col-sm-5">
-					{!! Html::image('assets/img/'.$page->images) !!}
+                      {!! Html::image($page->images) !!}
 				  </div>
 		        </div>
 		      </div>
@@ -33,7 +33,7 @@
 			<div class="row">
 		     <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
 		     	<div class=" delay-01s animated fadeInDown wow animated">
-		     		{!! Html::image('assets/img/'.$page->images) !!}
+                    {!! Html::image($page->images) !!}
 		     		<div >
                      <div >
                         <h4>Наш адрес:</h4>
