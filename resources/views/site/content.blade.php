@@ -93,8 +93,8 @@
           <h5>Все</h5></a></li>
           
           @foreach($tags as $tag)
-          	<li><a class="" href="#" data-filter=".{{$tag}}">
-          <h5>{{$tag}}</h5>
+              <li><a class="" href="#" data-filter=".category{{$tag->id}}">
+                      <h5>{{$tag->name}}</h5>
           </a></li>
           @endforeach
       </ul>
@@ -108,8 +108,9 @@
       @foreach($portfolios as $item)
      
       <!-- Portfolio Item -->
-      <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); max-width: 200px; opacity: 1;" class="portfolio-item one-four   {{ $item->filter }} isotope-item">
-        <div class="img-thumbnail"> {{ Html::image('assets/img/'.$item->images,$item->name)}} </div>  
+          <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); max-width: 200px; opacity: 1;"
+               class="portfolio-item one-four category{{ $item->category_id }} isotope-item">
+              <div class="img-thumbnail"><img src="{{ $item->images }}" alt=""/></div>
         <div class="item_overlay">
           <div class="item_info">
             <h4 class="project_name">{{ $item->name }}</h4>
