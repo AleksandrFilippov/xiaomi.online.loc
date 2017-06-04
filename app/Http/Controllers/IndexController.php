@@ -17,6 +17,12 @@ use DB;
 
 class IndexController extends Controller
 {
+    /**
+     * Отправка письма из формы обратной связи
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function mail(Request $request)
     {
         if ($request->isMethod('post')) {
@@ -53,11 +59,17 @@ class IndexController extends Controller
         }
     }
 
+    /**
+     * Формирование главной страницы сайта
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $pages = Page::all();
 
-        $tags = Category::all();
+        $categories = Category::all();
 
         $products = Product::all();
 
@@ -75,12 +87,11 @@ class IndexController extends Controller
         /*$item = array('title'=>'Обратная связь','alias'=>'contact');
         array_push($menu,$item);*/
 
-        return view('site.index', array(
-
-            'menu' => $menu,
-            'portfolios' => $products,
-            'pages' => $pages,
-            'tags' => $tags
+        return view('site.index', compact(
+            'menu',
+            'products',
+            'pages',
+            'categories'
         ));
     }
 }
