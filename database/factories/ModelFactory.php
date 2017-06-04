@@ -24,7 +24,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 $factory->define(App\Category::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->unique()->word,
+        'name' => strtoupper($faker->unique()->word),
 
     ];
 });
@@ -39,8 +39,8 @@ $factory->define(App\Page::class, function (Faker\Generator $faker) {
 });
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
     return [
-        'article' => $faker->unique()->word,
-        'name' => $faker->word,
+        'article' => $faker->unique()->swiftBicNumber, //RZTIAT22263
+        'name' => str_replace('.', '', $faker->sentence(rand(1, 3))),
         'images' => $faker->imageUrl($width = 200, $height = 200),
         'category_id' => null,
         'price' => $faker->numberBetween($min = 800, $max = 2000),
