@@ -11,7 +11,7 @@ Route::group([], function () {
 
     Route::get('/', ['uses' => 'IndexController@index', 'as' => 'home']);
     Route::post('/', ['uses' => 'IndexController@mail', 'as' => 'mail']);
-    Route::get('/page/{alias}', ['uses' => 'PageController@execute', 'as' => 'page']);
+    Route::get('/page/{page}', ['uses' => 'PageController@show', 'as' => 'page']);
     Route::auth();
 });
 
