@@ -49,7 +49,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 });
 
-Route::auth();
 Route::get('/home', 'HomeController@index');
 
 //для отправки файла
