@@ -18,3 +18,4 @@ class PagesController extends Controller
             return view('site.page', $data);
         }
     }
+}
