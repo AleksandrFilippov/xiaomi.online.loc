@@ -8,14 +8,20 @@ use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
 {
-    public function show(Pages $pages)
+    /**
+     * Список страниц в админке
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
     {
-        if (view()->exists('admin.pages')) {
-            $data = [
-                'title' => $pages->name,
-                'pages' => $pages
-            ];
-            return view('site.page', $data);
-        }
+        $pages = Page::all();
+
+        $data = [
+            'title' => 'Страницы',
+            'pages' => $pages,
+        ];
+
+        return view('admin.pages', $data);
     }
 }

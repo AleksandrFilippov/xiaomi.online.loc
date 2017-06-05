@@ -27,9 +27,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 
     //admin/pages
-    Route::group(['prefix' => 'pages'], function () {
+    Route::group(['prefix' => 'pages', 'namespace' => 'Admin'], function () {
         ///admin/pages
-        Route::get('/', ['uses' => 'Admin\PagesController@show', 'as' => 'pages']);
+        Route::get('/', ['uses' => 'PagesController@index', 'as' => 'admin.pages.index']);
         //admin/pages/add
         Route::match(['get', 'post'], '/add', ['uses' => 'PagesAddController@execute', 'as' => 'pagesAdd']);
         //admin/edit/2

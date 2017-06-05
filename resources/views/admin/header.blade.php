@@ -13,7 +13,7 @@
 
   <div id="filters" class="sixteen columns">
       <ul style="padding:0px 0px 0px 0px">
-        <li><a  href="{{route('pages')}}">
+          <li><a href="{{route('admin.pages.index')}}">
           <h5>Страницы</h5>
           </a>
 		</li>
