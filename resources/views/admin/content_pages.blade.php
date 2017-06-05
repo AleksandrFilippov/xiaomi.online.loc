@@ -20,12 +20,12 @@
         	<tr>
         	
         		<td>{{ $page->id }}</td>
-        		<td>{!! Html::link(route('pagesEdit',['page'=>$page->id]),$page->name,['alt'=>$page->name]) !!}</td>
+                <td>{!! Html::link(route('admin.pages.edit',['page'=>$page->id]),$page->name,['alt'=>$page->name]) !!}</td>
         		<td>{{ $page->alias }}</td>
         		<td>{{ $page->created_at }}</td>
         		
         		<td>
-	        		{!! Form::open(['url'=>route('pagesEdit',['page'=>$page->id]), 'class'=>'form-horizontal','method' => 'POST']) !!}
+                    {!! Form::open(['url'=>route('admin.pages.edit',['page'=>$page->id]), 'class'=>'form-horizontal','method' => 'POST']) !!}
 
 	        			{{ method_field('DELETE') }}
 	        			{!! Form::button('Удалить',['class'=>'btn btn-danger','type'=>'submit']) !!}

@@ -24,4 +24,10 @@ class PagesController extends Controller
 
         return view('admin.pages', $data);
     }
+
+    public function edit(Page $pages)
+    {
+        $pages->delete();
+        return redirect('admin.pages')->with('status', 'Страница удалена');
+    }
 }
