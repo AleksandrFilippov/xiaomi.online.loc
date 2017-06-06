@@ -65,6 +65,12 @@ class PagesController extends Controller
         return redirect()->route('admin.pages.index')->with('status', 'Страница обновлена');
     }
 
+    /**
+     * Удаление страницы
+     *
+     * @param Page $page
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function delete(Page $page)
     {
         $page->delete();

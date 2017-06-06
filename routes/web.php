@@ -34,11 +34,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/{page}', ['uses' => 'PagesController@edit', 'as' => 'admin.pages.edit']);
         Route::put('/{page}', ['uses' => 'PagesController@update', 'as' => 'admin.pages.update']);
         Route::delete('/{page}', ['uses' => 'PagesController@delete', 'as' => 'admin.pages.delete']);
-
         //admin/pages/add
-        Route::match(['get', 'post'], '/add', ['uses' => 'PagesAddController@execute', 'as' => 'pagesAdd']);
-
+        Route::get('/{page}', ['uses' => 'PagesController@create', 'as' => 'admin.pages.create']);
+        Route::put('/{page}', ['uses' => 'PagesController@store', 'as' => 'admin.pages.store']);
+//        Route::match(['get', 'post'], '/add', ['uses' => 'PagesAddController@execute', 'as' => 'pagesAdd']);
     });
+
+
     //admin/portfolios
     Route::group(['prefix' => 'portfolios'], function () {
         Route::get('/', ['uses' => 'PortfoliosController@execute', 'as' => 'portfolio']);
