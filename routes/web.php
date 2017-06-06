@@ -30,13 +30,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'pages', 'namespace' => 'Admin'], function () {
         ///admin/pages
         Route::get('/', ['uses' => 'PagesController@index', 'as' => 'admin.pages.index']);
+
+        //admin/pages/add
+        Route::get('/create', ['uses' => 'PagesController@create', 'as' => 'admin.pages.create']);
+        Route::post('/', ['uses' => 'PagesController@store', 'as' => 'admin.pages.store']);
+
         //admin/pages/2
         Route::get('/{page}', ['uses' => 'PagesController@edit', 'as' => 'admin.pages.edit']);
         Route::put('/{page}', ['uses' => 'PagesController@update', 'as' => 'admin.pages.update']);
         Route::delete('/{page}', ['uses' => 'PagesController@delete', 'as' => 'admin.pages.delete']);
-        //admin/pages/add
-        Route::get('/{page}', ['uses' => 'PagesController@create', 'as' => 'admin.pages.create']);
-        Route::put('/{page}', ['uses' => 'PagesController@store', 'as' => 'admin.pages.store']);
+
 //        Route::match(['get', 'post'], '/add', ['uses' => 'PagesAddController@execute', 'as' => 'pagesAdd']);
     });
 
