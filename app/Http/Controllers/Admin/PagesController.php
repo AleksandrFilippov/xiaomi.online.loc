@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\UpdatePageRequest;
 use App\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,60 +23,52 @@ class PagesController extends Controller
             'pages' => $pages,
         ];
 
-        return view('admin.pages', $data);
+        return view('admin.pages.index', $data);
     }
 
-    public function update(Request $request)
+    /**
+     * Форма для обновления страницы
+     *
+     * @param Request $request
+     * @param Page $page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Request $request, Page $page)
     {
-        if ($request->isMethod('post')) {
+        $data = [
+            'title' => 'Редактирование страницы - ' . $page->name,
+            'page' => $page
+        ];
 
-            $input = $request->except('_token');
-            $validator = Validator::make($input, [
+        return view('admin.pages.edit', $data);
+    }
 
-                'name' => 'required|max:255',
-                'alias' => 'required|max:255|unique:pages,alias,' . $input['id'],
-                'text' => 'required'
-
-            ]);
-
-            if ($validator->fails()) {
-                return redirect()
-                    ->route('admin.pages', ['page' => $input['id']])
-                    ->withErrors($validator);
-            }
-
-            if ($request->hasFile('images')) {
-                $file = $request->file('images');
-                $file->move(public_path() . '/assets/img', $file->getClientOriginalName());
-                $input['images'] = $file->getClientOriginalName();
-            } else {
-                $input['images'] = $input['old_images'];
-            }
-
-            unset($input['old_images']);
-
-            $pages->fill($input);
-
-            if ($pages->update()) {
-                return redirect('admin.pages')->with('status', 'Страница обновлена');
-            }
-
+    /**
+     * Логика обновления страниц
+     *
+     * @param UpdatePageRequest $request
+     * @param Page $page
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(UpdatePageRequest $request, Page $page)
+    {
+        if ($request->hasFile('images')) {
+            $file = $request->file('images');
+            $fileName = md5($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('/assets/img/pages'), $fileName);
+            $page->images = '/assets/img/pages' . $fileName;
         }
 
-        $old = $pages->toArray();
-        if (view()->exists('admin.pages_edit')) {
+        $page->fill($request->only('name', 'alias', 'text'));
+        $page->save();
 
-            $data = [
-                'title' => 'Редактирование страницы - ' . $old['name'],
-                'data' => $old
-            ];
-            return view('admin.pages_edit', $data);
-        }
+        return redirect()->route('admin.pages.index')->with('status', 'Страница обновлена');
     }
 
     public function delete(Page $page)
     {
         $page->delete();
-        return redirect('admin.pages')->with('status', 'Страница удалена');
+
+        return redirect()->route('admin.pages.index')->with('status', 'Страница удалена');
     }
 }
