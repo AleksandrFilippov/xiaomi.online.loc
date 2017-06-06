@@ -27,17 +27,50 @@ class PagesController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param Page $page
+     * Форма создания новой страницы
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(Request $request, Page $page)
+    public function create()
     {
         $data = [
             'title' => 'Новая страница'
         ];
 
-        return view('admin.pages.add', $data);
+        return view('admin.pages.create', $data);
+    }
+
+    /**
+     * Логика создания страницы
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store()
+    {
+        if ($request->isMethod('post')) {
+            $input = $request->except('_token');
+
+            $massages = [
+
+                'required' => 'Поле :attribute обязательно к заполнению',
+                'unique' => 'Поле :attribute должно быть уникальным'
+            ];
+
+            $file = $request->file('images');
+
+            $input['images'] = $file->getClientOriginalName();
+
+            $file->move(public_path() . '/assets/img', $input['images']);
+
+
+            $page = new Page();
+
+            $page->fill($input);
+
+            if ($page->save()) {
+                return redirect('admin.pages.index')->with('status', 'Страница добавлена');
+            }
+        }
     }
 
     /**

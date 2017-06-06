@@ -18,13 +18,11 @@ class PagesAddController extends Controller
     	
     	if($request->isMethod('post')) {
 			$input = $request->except('_token');
-			
-			
-			$massages = [
+
+            $massages = [
 			
 				'required'=>'Поле :attribute обязательно к заполнению',
 				'unique'=>'Поле :attribute должно быть уникальным'
-			
 			];
 			
 			
