@@ -25,7 +25,7 @@ class StorePageRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'alias' => 'required|max:255|unique:pages,alias,' . $page->id,
+            'alias' => 'required|unique:pages|max:255',
             'text' => 'required'
         ];
     }

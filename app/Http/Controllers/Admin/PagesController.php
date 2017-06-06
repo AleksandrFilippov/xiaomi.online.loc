@@ -27,6 +27,20 @@ class PagesController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param Page $page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create(Request $request, Page $page)
+    {
+        $data = [
+            'title' => 'Новая страница'
+        ];
+
+        return view('admin.pages.add', $data);
+    }
+
+    /**
      * Форма для обновления страницы
      *
      * @param Request $request
