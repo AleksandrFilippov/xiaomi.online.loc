@@ -51,7 +51,6 @@ class PagesController extends Controller
             $input = $request->except('_token');
 
             $massages = [
-
                 'required' => 'Поле :attribute обязательно к заполнению',
                 'unique' => 'Поле :attribute должно быть уникальным'
             ];
@@ -61,7 +60,6 @@ class PagesController extends Controller
             $input['images'] = $file->getClientOriginalName();
 
             $file->move(public_path() . '/assets/img', $input['images']);
-
 
             $page = new Page();
 

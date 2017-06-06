@@ -49,7 +49,7 @@
             </table>
         @endif
 
-        {!! Html::link(route('pagesAdd'),'Новая страница') !!}
+        {!! Html::link(route('admin.pages.create'),'Новая страница') !!}
     </div>
 
 @endsection
