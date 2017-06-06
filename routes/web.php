@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::match(['get', 'post'], '/add', ['uses' => 'PagesAddController@execute', 'as' => 'pagesAdd']);
         //admin/pages/2
         Route::post('/{page}', ['uses' => 'PagesController@update', 'as' => 'admin.pages.update']);
-        Route::delete('/{page}', ['uses' => 'PagesController@edit', 'as' => 'admin.pages.edit']);
+        Route::delete('/{page}', ['uses' => 'PagesController@delete', 'as' => 'admin.pages.delete']);
     });
     //admin/portfolios
     Route::group(['prefix' => 'portfolios'], function () {
