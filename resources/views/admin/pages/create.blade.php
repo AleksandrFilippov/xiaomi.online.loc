@@ -11,14 +11,15 @@
 
     <div class="wrapper container-fluid">
 
-        {!! Form::open(['url' => route('pagesAdd'),'class'=>'form-horizontal','method'=>'POST','enctype'=>'multipart/form-data']) !!}
+        {!! Form::open(['url' => route('admin.pages.store'),'class'=>'form-horizontal','method'=>'POST','enctype'=>'multipart/form-data']) !!}
 
+        {{ method_field('put') }}
 
         <div class="form-group">
 
             {!! Form::label('name','Название',['class' => 'col-xs-2 control-label'])   !!}
             <div class="col-xs-8">
-                {!! Form::text('name',old('name'),['class' => 'form-control','placeholder'=>'Введите название страницы'])!!}
+                {!! Form::text('name',$page->name,['class' => 'form-control','placeholder'=>'Введите название страницы'])!!}
             </div>
 
         </div>
@@ -26,14 +27,14 @@
         <div class="form-group">
             {!! Form::label('alias', 'Псевдоним:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::text('alias', old('alias'), ['class' => 'form-control','placeholder'=>'Введите псевдоним страницы']) !!}
+                {!! Form::text('alias', $page->alias, ['class' => 'form-control','placeholder'=>'Введите псевдоним страницы']) !!}
             </div>
         </div>
 
         <div class="form-group">
             {!! Form::label('text', 'Текст:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::textarea('text', old('text'), ['id'=>'editor','class' => 'form-control','placeholder'=>'Введите текст страницы']) !!}
+                {!! Form::textarea('text', $page->text, ['id'=>'editor','class' => 'form-control','placeholder'=>'Введите текст страницы']) !!}
             </div>
         </div>
 
