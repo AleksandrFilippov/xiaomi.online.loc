@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use App\Product;
 
 
-class ProductController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Список продуктов в админке
@@ -66,14 +66,51 @@ class ProductController extends Controller
         }
     }
 
-    public function edit(Request $request, Page $product)
+    /**
+     * Форма обнавления страницы
+     *
+     * @param Request $request
+     * @param Product $product
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Request $request, Product $product)
     {
+        $old = $product->toArray();
 
+        $data = [
+            'title' => 'Редактирование страницы - ' . $old['name'],
+            'data' => $old
+        ];
+
+        return view('admin.products.edit', $data);
     }
 
+    /**
+     * логика обнавления (изменения) товара
+     *
+     * @param UpdateProductRequest $request
+     * @param Product $product
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(UpdateProductRequest $request, Product $product)
     {
+        $input = $request->except('_token');
+        if ($request->hasFile('images')) {
+            $file = $request->file('images');
+            $request->file('images')->move(public_path() . '/assets/img', $file->getClientOriginalName());
+            $input['images'] = $file->getClientOriginalName();
+        } else {
+            $input['images'] = $input['old_images'];
+        }
 
+        unset($input['old_images']);
+
+        $product->fill($input);
+        if ($product->update()) {
+            return redirect('admin.product.index')->with('status', 'Страница обновлена');
+        } else {
+            return redirect()->route('admin.product.index')->with('status', 'Страница не обнавлена');
+        }
     }
 
     /**
