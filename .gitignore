@@ -8,3 +8,5 @@ Homestead.json
 Homestead.yaml
 .env
 descript.ion
+.phpstorm.meta.php
+_ide_helper.php

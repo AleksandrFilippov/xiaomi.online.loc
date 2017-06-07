@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\UpdatePageRequest;
+use App\Http\Requests\StorePageRequest;
 use App\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -45,29 +46,20 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store()
+    public function store(StorePageRequest $request)
     {
-        if ($request->isMethod('post')) {
-            $input = $request->except('_token');
+        $input = $request->except('_token');
 
-            $massages = [
-                'required' => 'Поле :attribute обязательно к заполнению',
-                'unique' => 'Поле :attribute должно быть уникальным'
-            ];
+        $file = $request->file('images');
+        $input['images'] = $file->getClientOriginalName();
+        $file->move(public_path() . '/assets/img/pages', $input['images']);
+        $page = new Page();
+        $page->fill($input);
 
-            $file = $request->file('images');
-
-            $input['images'] = $file->getClientOriginalName();
-
-            $file->move(public_path() . '/assets/img', $input['images']);
-
-            $page = new Page();
-
-            $page->fill($input);
-
-            if ($page->save()) {
-                return redirect('admin.pages.index')->with('status', 'Страница добавлена');
-            }
+        if ($page->save()) {
+            return redirect()->route('admin.pages.index')->with('status', 'Страница добавлена');
+        } else {
+            return redirect()->route('admin.pages.index')->with('status', 'Страница не добавлена');
         }
     }
 
