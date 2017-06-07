@@ -12,6 +12,7 @@
                 <thead>
                 <tr>
                     <th>№ п/п</th>
+                    <th>Артикул</th>
                     <th>Имя</th>
                     <th>Фильтр</th>
                     <th>Изображение</th>
@@ -24,13 +25,14 @@
                 @foreach($products as $k => $product)
                     <tr>
                         <td>{{$product->id}}</td>
-                        <td>  {!! Html::link(route('admin.products.edit',['product'=>$product->id]),$product->name,['alt'=>$product->name]) !!}  </td>
+                        <td>{{$product->article}}</td>
+                        <td>{!! Html::link(route('admin.products.edit',['product'=>$product->alias]),$product->name,['alt'=>$product->name]) !!}  </td>
                         <td>{{$product->filter}}</td>
                         <td>{!! Html::image('assets/img/'.$product->images,'', array('style' => 'width:150px' )) !!}</td>
                         <td>{{$product->price}}</td>
                         <td>{{$product->created_at}}</td>
                         <td>
-                            {!! Form::open(['url' => route('admin.products.edit',['product'=>$product->id]),'class'=>'form-horizontal','method'=>'POST']) !!}
+                            {!! Form::open(['url' => route('admin.products.delete', $product->alias),'class'=>'form-horizontal','method'=>'POST']) !!}
                             {{ method_field('DELETE') }}
                             {!! Form::button('Удалить', ['class' => 'btn btn-danger','type'=>'submit']) !!}
                             {!! Form::close() !!}

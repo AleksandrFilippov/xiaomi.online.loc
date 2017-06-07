@@ -6,7 +6,13 @@
 
 @section('content')
     <div class="wrapper container-fluid">
-        {!! Form::open(['url' => route('admin.product.store'),'class'=>'form-horizontal','method'=>'POST','enctype'=>'multipart/form-data']) !!}
+        {!! Form::open(['url' => route('admin.products.store'),'class'=>'form-horizontal','method'=>'POST','enctype'=>'multipart/form-data']) !!}
+        <div class="form-group">
+            {!! Form::label('article', 'Артикул:',['class'=>'col-xs-2 control-label']) !!}
+            <div class="col-xs-8">
+                {!! Form::text('article', old('article'), ['class' => 'form-control','placeholder'=>'Введите артикул товара']) !!}
+            </div>
+        </div>
         <div class="form-group">
             {!! Form::label('name', 'Название:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
