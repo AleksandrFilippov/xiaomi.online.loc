@@ -31,7 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         ///admin/pages
         Route::get('/', ['uses' => 'PagesController@index', 'as' => 'admin.pages.index']);
 
-        //admin/pages/add
+        //admin/pages/create
         Route::get('/create', ['uses' => 'PagesController@create', 'as' => 'admin.pages.create']);
         Route::post('/', ['uses' => 'PagesController@store', 'as' => 'admin.pages.store']);
 
@@ -39,10 +39,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/{page}', ['uses' => 'PagesController@edit', 'as' => 'admin.pages.edit']);
         Route::put('/{page}', ['uses' => 'PagesController@update', 'as' => 'admin.pages.update']);
         Route::delete('/{page}', ['uses' => 'PagesController@delete', 'as' => 'admin.pages.delete']);
-
-//        Route::match(['get', 'post'], '/add', ['uses' => 'PagesAddController@execute', 'as' => 'pagesAdd']);
     });
 
+    //admin/products
+    Route::group(['prefix' => 'products', 'namespace' => 'Admin'], function () {
+        ///admin/products
+        Route::get('/', ['uses' => 'ProductsController@index', 'as' => 'admin.products.index']);
+
+        //admin/products/create
+        Route::get('/create', ['uses' => 'ProductsController@create', 'as' => 'admin.products.create']);
+        Route::post('/', ['uses' => 'ProductsController@store', 'as' => 'admin.products.store']);
+
+        //admin/products/2
+        Route::get('/{page}', ['uses' => 'ProductsController@edit', 'as' => 'admin.products.edit']);
+        Route::put('/{page}', ['uses' => 'ProductsController@update', 'as' => 'admin.products.update']);
+        Route::delete('/{page}', ['uses' => 'ProductsController@delete', 'as' => 'admin.products.delete']);
+    });
 
     //admin/portfolios
     Route::group(['prefix' => 'portfolios'], function () {
