@@ -56,12 +56,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::delete('/{page}', ['uses' => 'ProductsController@delete', 'as' => 'admin.products.delete']);
     });
 
-    //admin/portfolios
-    Route::group(['prefix' => 'portfolios'], function () {
-        Route::get('/', ['uses' => 'PortfoliosController@execute', 'as' => 'portfolio']);
-        Route::match(['get', 'post'], '/add', ['uses' => 'PortfoliosAddController@execute', 'as' => 'portfoliosAdd']);
-        Route::match(['get', 'post', 'delete'], '/edit/{portfolio}', ['uses' => 'PortfoliosEditController@execute', 'as' => 'portfoliosEdit']);
-    });
+    /*    //admin/portfolios
+        Route::group(['prefix' => 'portfolios'], function () {
+            Route::get('/', ['uses' => 'PortfoliosController@execute', 'as' => 'portfolio']);
+            Route::match(['get', 'post'], '/add', ['uses' => 'PortfoliosAddController@execute', 'as' => 'portfoliosAdd']);
+            Route::match(['get', 'post', 'delete'], '/edit/{portfolio}', ['uses' => 'PortfoliosEditController@execute', 'as' => 'portfoliosEdit']);
+        });*/
 
     //admin/services
     Route::group(['prefix' => 'services'], function () {

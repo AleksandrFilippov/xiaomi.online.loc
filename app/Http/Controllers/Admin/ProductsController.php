@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdatePageRequest;
-use App\Http\Requests\StorePageRequest;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProductRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
-
 
 class ProductsController extends Controller
 {
@@ -107,7 +104,7 @@ class ProductsController extends Controller
 
         $product->fill($input);
         if ($product->update()) {
-            return redirect('admin.product.index')->with('status', 'Страница обновлена');
+            return redirect()->route('admin.product.index')->with('status', 'Страница обновлена');
         } else {
             return redirect()->route('admin.product.index')->with('status', 'Страница не обнавлена');
         }

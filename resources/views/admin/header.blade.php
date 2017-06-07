@@ -17,9 +17,9 @@
           <h5>Страницы</h5>
           </a>
 		</li>
-		
-		<li><a  href="{{route('portfolio')}}">
-          <h5>Порфолио</h5>
+
+          <li><a href="{{route('admin.products.index')}}">
+                  <h5>Список товаров</h5>
           </a>
 		</li>
 		
