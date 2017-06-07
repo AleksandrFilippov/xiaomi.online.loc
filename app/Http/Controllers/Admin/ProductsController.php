@@ -24,7 +24,7 @@ class ProductsController extends Controller
             'products' => $products
         ];
 
-        return view('admin.product.index', $data);
+        return view('admin.products.index', $data);
     }
 
     /**
