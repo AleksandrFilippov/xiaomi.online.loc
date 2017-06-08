@@ -7,32 +7,32 @@
 @section('content')
     <div class="wrapper container-fluid">
 
-        {!! Form::open(['url' => route('admin.products.update',['products'=>$data['id']]),'class'=>'form-horizontal','method'=>'POST','enctype'=>'multipart/form-data']) !!}
+        {!! Form::open(['url' => route('admin.products.update', $product->alias),'class'=>'form-horizontal','method'=>'POST','enctype'=>'multipart/form-data']) !!}
         <div class="form-group">
             {!! Form::label('article', 'Артикул:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::text('article', old('article'), ['class' => 'form-control','placeholder'=>'Введите артикул товара']) !!}
+                {!! Form::text('article', $product->article, ['class' => 'form-control','placeholder'=>'Введите артикул товара']) !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('name', 'Название:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::text('name', $data['name'], ['class' => 'form-control','placeholder'=>'Введите название товара']) !!}
+                {!! Form::text('name', $product->name, ['class' => 'form-control','placeholder'=>'Введите название товара']) !!}
             </div>
         </div>
-        {!! Form::hidden('id', $data['id']) !!}
+        {!! Form::hidden('id', $product->id) !!}
         <div class="form-group">
             {!! Form::label('filter', 'Фильтр:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::text('filter', $data['filter'], ['class' => 'form-control','placeholder'=>'Введите псевдоним (фильтр) страницы']) !!}
+                {!! Form::text('filter', $product->category->name, ['class' => 'form-control','placeholder'=>'Введите псевдоним (фильтр) страницы']) !!}
             </div>
         </div>
 
         <div class="form-group">
             {!! Form::label('old_images', 'Изображение:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-offset-2 col-xs-10">
-                {!! Html::image($data->images,'',['class'=>'img-circle img-responsive','width'=>'150px']) !!}
-                {!! Form::hidden('old_images', $data['images']) !!}
+                {!! Html::image($product->images,'',['class'=>'img-circle img-responsive','width'=>'100px']) !!}
+                {!! Form::hidden('old_images', $product->images) !!}
             </div>
         </div>
 
@@ -45,7 +45,7 @@
         <div class="form-group">
             {!! Form::label('price', 'Цена:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::text('price', $data['price'], ['class' => 'form-control','placeholder'=>'Введите цену']) !!}
+                {!! Form::text('price', $product->price, ['class' => 'form-control','placeholder'=>'Введите цену']) !!}
             </div>
         </div>
 

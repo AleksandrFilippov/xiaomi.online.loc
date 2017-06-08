@@ -27,8 +27,9 @@
                         <td>{{$product->id}}</td>
                         <td>{{$product->article}}</td>
                         <td>{!! Html::link(route('admin.products.edit',['product'=>$product->alias]),$product->name,['alt'=>$product->name]) !!}  </td>
-                        <td>{{$product->filter}}</td>
-                        <td>{!! Html::image($product->images,'', array('style' => 'width:150px' )) !!}</td>
+                        {{--<td>{{$product->category->name}}</td>--}}
+                        <td></td>
+                        <td>{!! Html::image($product->images,'', array('style' => 'width:100px' )) !!}</td>
                         <td>{{$product->price}}</td>
                         <td>{{$product->created_at}}</td>
                         <td>

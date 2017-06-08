@@ -10,20 +10,20 @@
         <div class="form-group">
             {!! Form::label('article', 'Артикул:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::text('article', old('article'), ['class' => 'form-control','placeholder'=>'Введите артикул товара']) !!}
+                {!! Form::text('article', null, ['class' => 'form-control','placeholder'=>'Введите артикул товара']) !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('name', 'Название:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::text('name', old('name'), ['class' => 'form-control','placeholder'=>'Введите название товара']) !!}
+                {!! Form::text('name', null, ['class' => 'form-control','placeholder'=>'Введите название товара']) !!}
             </div>
         </div>
 
         <div class="form-group">
             {!! Form::label('filter', 'Фильтр:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::text('filter', old('filter'), ['class' => 'form-control','placeholder'=>'Введите псевдоним (фильтр) страницы']) !!}
+                {!! Form::text('filter', null, ['class' => 'form-control','placeholder'=>'Введите псевдоним (фильтр) страницы']) !!}
             </div>
         </div>
 
@@ -36,7 +36,7 @@
         <div class="form-group">
             {!! Form::label('price', 'Цена:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::text('price', old('price'), ['class' => 'form-control','placeholder'=>'Введите цену']) !!}
+                {!! Form::text('price', null, ['class' => 'form-control','placeholder'=>'Введите цену']) !!}
             </div>
         </div>
 

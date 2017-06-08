@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['article', 'name', 'filter', 'images', 'price'];
+    protected $fillable = ['article', 'name', 'images', 'price'];
 
     public function getFirstImage()
     {
