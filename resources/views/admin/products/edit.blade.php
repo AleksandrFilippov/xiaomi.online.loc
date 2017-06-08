@@ -31,7 +31,7 @@
         <div class="form-group">
             {!! Form::label('old_images', 'Изображение:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-offset-2 col-xs-10">
-                {!! Html::image('assets/img/'.$data['images'],'',['class'=>'img-circle img-responsive','width'=>'150px']) !!}
+                {!! Html::image($data->images,'',['class'=>'img-circle img-responsive','width'=>'150px']) !!}
                 {!! Form::hidden('old_images', $data['images']) !!}
             </div>
         </div>
