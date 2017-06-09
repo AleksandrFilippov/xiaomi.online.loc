@@ -18,10 +18,12 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
+        $categories = Category::all();
 
         $data = [
             'title' => 'Продукция',
-            'products' => $products
+            'products' => $products,
+            'categories' => $categories
         ];
 
         return view('admin.products.index', $data);
