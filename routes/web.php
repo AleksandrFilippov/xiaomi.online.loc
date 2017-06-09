@@ -53,6 +53,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         //admin/products/2
         Route::get('/{page}', ['uses' => 'ProductsController@edit', 'as' => 'admin.products.edit']);
         Route::put('/{page}', ['uses' => 'ProductsController@update', 'as' => 'admin.products.update']);
+
         Route::delete('/{page}', ['uses' => 'ProductsController@delete', 'as' => 'admin.products.delete']);
     });
 

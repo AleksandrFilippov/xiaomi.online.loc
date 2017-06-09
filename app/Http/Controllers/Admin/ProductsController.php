@@ -113,13 +113,15 @@ class ProductsController extends Controller
     /**
      * Удаление товара из списка товаров
      *
+     * @param Request $request
      * @param Product $product
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function delete(Product $product)
+    public function delete(Request $request, Product $product)
     {
-        $product->delete();
-
-        return redirect()->route('admin.products.index')->with('status', 'Товар удален');
+        if ($request->isMethod('delete')) {
+            $product->delete();
+            return redirect()->route('admin.products.index')->with('status', 'Товар удален');
+        }
     }
 }

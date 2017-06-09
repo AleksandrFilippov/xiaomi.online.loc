@@ -8,7 +8,7 @@ class Page extends Model
 {
     protected $appends = ['title'];
 
-    protected $fillable = ['name', 'text', 'alias', 'images'];
+    protected $fillable = ['name', 'alias', 'text', 'images'];
 
     protected $casts = ['is_main' => 'boolean'];
 
