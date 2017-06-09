@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -18,12 +19,12 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
-        $categories = Category::all();
+        $category = DB::table('categories')->get();
 
         $data = [
             'title' => 'Продукция',
             'products' => $products,
-            'categories' => $categories
+            'category' => $category
         ];
 
         return view('admin.products.index', $data);
