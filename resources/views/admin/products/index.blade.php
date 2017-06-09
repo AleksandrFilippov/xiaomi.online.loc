@@ -26,14 +26,13 @@
                     <tr>
                         <td>{{$product->id}}</td>
                         <td>{{$product->article}}</td>
-                        <td>{!! Html::link(route('admin.products.edit',['product'=>$product->alias]),$product->name,['alt'=>$product->name]) !!}  </td>
-                        {{--<td>{{$product->category->name}}</td>--}}
-                        <td></td>
-                        <td>{!! Html::image($product->images,'', array('style' => 'width:100px' )) !!}</td>
+                        <td>{!! Html::link(route('admin.products.edit',['product'=>$product->id]),$product->name,['alt'=>$product->name]) !!}  </td>
+                        <td>{{$product->category->name}}</td>
+                        <td>{!! Html::image($product->images,'', array('style' => 'width:50px' )) !!}</td>
                         <td>{{$product->price}}</td>
                         <td>{{$product->created_at}}</td>
                         <td>
-                            {!! Form::open(['url' => route('admin.products.delete', $product->alias),'class'=>'form-horizontal','method'=>'POST']) !!}
+                            {!! Form::open(['url' => route('admin.products.delete', ['product'=>$product->id]),'class'=>'form-horizontal','method'=>'POST']) !!}
                             {{ method_field('DELETE') }}
                             {!! Form::button('Удалить', ['class' => 'btn btn-danger','type'=>'submit']) !!}
                             {!! Form::close() !!}
