@@ -51,10 +51,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::post('/', ['uses' => 'ProductsController@store', 'as' => 'admin.products.store']);
 
         //admin/products/2
-        Route::get('/{page}', ['uses' => 'ProductsController@edit', 'as' => 'admin.products.edit']);
-        Route::put('/{page}', ['uses' => 'ProductsController@update', 'as' => 'admin.products.update']);
+        Route::get('/edit', ['uses' => 'ProductsController@edit', 'as' => 'admin.products.edit']);
+        Route::put('/', ['uses' => 'ProductsController@update', 'as' => 'admin.products.update']);
 
-        Route::delete('/{page}', ['uses' => 'ProductsController@delete', 'as' => 'admin.products.delete']);
+        Route::delete('/delete', ['uses' => 'ProductsController@delete', 'as' => 'admin.products.delete']);
     });
 
     /*    //admin/portfolios
