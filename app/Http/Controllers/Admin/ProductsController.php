@@ -58,7 +58,7 @@ class ProductsController extends Controller
     {
         $input = $request->except('_token');
         $file = $request->file('images');
-        $input['images'] = $file->getClientOriginalName();
+        $input['images'] = '/assets/img/pages/' . $file->getClientOriginalName();
         $file->move(public_path() . '/assets/img/pages', $input['images']);
         $product = new Product();
         $product->fill($input);

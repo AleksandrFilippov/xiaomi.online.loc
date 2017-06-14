@@ -24,7 +24,7 @@
                 <tbody>
                 @foreach($products as $k => $product)
                     <tr>
-                        <td>{{$product->id}}</td>
+                        <td>{{$loop->iteration}}</td>
                         <td>{{$product->article}}</td>
                         <td>{!! Html::link(route('admin.products.edit',['product'=>$product->id]),$product->name,['title'=>$product->name]) !!}  </td>
                         <td>{{$product->category->name}}</td>
