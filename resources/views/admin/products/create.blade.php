@@ -23,7 +23,7 @@
         <div class="form-group">
             {!! Form::label('filter', 'Фильтр:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::text('filter', null, ['class' => 'form-control','placeholder'=>'Введите псевдоним (фильтр) страницы']) !!}
+                {!! Form::select('category_id', $categories, null, ['class' => 'form-control','placeholder'=>'Введите псевдоним (фильтр) страницы']) !!}
             </div>
         </div>
 
