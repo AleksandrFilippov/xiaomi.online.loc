@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Controllers\Controller;
@@ -19,7 +20,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
-        $category = DB::table('categories')->get();
+        $category = Category::all();
 
         $data = [
             'title' => 'Продукция',
