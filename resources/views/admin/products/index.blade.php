@@ -26,7 +26,7 @@
                     <tr>
                         <td>{{$product->id}}</td>
                         <td>{{$product->article}}</td>
-                        <td>{!! Html::link(route('admin.products.edit',['product'=>$product->id]),$product->name,['alt'=>$product->name]) !!}  </td>
+                        <td>{!! Html::link(route('admin.products.edit',['product'=>$product->id]),$product->name,['title'=>$product->name]) !!}  </td>
                         <td>{{$product->category->name}}</td>
                         <td>{!! Html::image($product->images,'', array('style' => 'width:50px' )) !!}</td>
                         <td>{{$product->price}}</td>
