@@ -77,13 +77,15 @@ class ProductsController extends Controller
      * @param Product $product
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Request $request, Product $product)
+    public function edit(Product $product)
     {
-        $old = $product->toArray();
+
+        $categories = Category::all()->pluck('name', 'id')->toArray();
 
         $data = [
-            'title' => 'Редактирование страницы - ' . $old['name'],
-            'data' => $old
+            'title' => 'Редактирование страницы - ' . $product->id,
+            'product' => $product,
+            'categories' => $categories,
         ];
 
         return view('admin.products.edit', $data);
@@ -111,9 +113,9 @@ class ProductsController extends Controller
 
         $product->fill($input);
         if ($product->update()) {
-            return redirect()->route('admin.product.index')->with('status', 'Страница обновлена');
+            return redirect()->route('admin.products.index')->with('status', 'Страница обновлена');
         } else {
-            return redirect()->route('admin.product.index')->with('status', 'Страница не обнавлена');
+            return redirect()->route('admin.products.index')->with('status', 'Страница не обнавлена');
         }
     }
 

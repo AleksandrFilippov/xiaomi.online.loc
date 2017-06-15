@@ -8,6 +8,9 @@
     <div class="wrapper container-fluid">
 
         {!! Form::open(['url' => route('admin.products.update', $product->id),'class'=>'form-horizontal','method'=>'POST','enctype'=>'multipart/form-data']) !!}
+
+        {{ method_field('put') }}
+
         <div class="form-group">
             {!! Form::label('article', 'Артикул:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
@@ -24,7 +27,7 @@
         <div class="form-group">
             {!! Form::label('filter', 'Фильтр:',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
-                {!! Form::text('category_id', $product->category->name, ['class' => 'form-control','placeholder'=>'Введите псевдоним (фильтр) страницы']) !!}
+                {!! Form::select('category_id',$categories, $product->category_id, ['class' => 'form-control','placeholder'=>'Введите псевдоним (фильтр) страницы']) !!}
             </div>
         </div>
 
