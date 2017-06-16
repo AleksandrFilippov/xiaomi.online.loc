@@ -14,4 +14,4 @@
         echo Form::close();
         ?>
     </div>
-    @endsect
+@endsection
