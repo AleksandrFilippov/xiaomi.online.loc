@@ -66,16 +66,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::post('/uploadfile', 'LoadProductsController@showUploadFile');
     });
 
-    //admin/services
-    Route::group(['prefix' => 'services'], function () {
-        Route::get('/', ['uses' => 'ServiceController@execute', 'as' => 'services']);
-        Route::match(['get', 'post'], '/add', ['uses' => 'ServicesAddController@execute', 'as' => 'servicesAdd']);
-        Route::match(['get', 'post', 'delete'], '/edit/{service}', ['uses' => 'ServicesEditController@execute', 'as' => 'servicesEdit']);
+    /**
+     *  Загрузка прайса для скачивания с сайта
+     */
+    Route::group(['prefix' => 'uploadfile', 'namespace' => 'Admin'], function () {
+        //admin
+        Route::get('/', ['uses' => 'LoadProductsController@create', 'as' => 'admin.uploadfile.create']);
+        Route::get('/uploadfile', 'UploadFileController@index');
+        Route::post('/uploadfile', 'UploadFileController@showUploadFile');
     });
+
 });
 
 Route::get('/home', 'HomeController@index');
-
-//для отправки файла
-Route::get('/uploadfile', 'UploadFileController@index');
-Route::post('/uploadfile', 'UploadFileController@showUploadFile');

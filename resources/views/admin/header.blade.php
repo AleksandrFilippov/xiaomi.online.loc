@@ -22,8 +22,8 @@
                   <h5>Список товаров</h5>
           </a>
 		</li>
-		
-		<li><a href="{{route('services')}}">
+
+          <li><a href="{{route('admin.uploadfile.create')}}">
           <h5>Прайс</h5>
           </a>
 		</li>
