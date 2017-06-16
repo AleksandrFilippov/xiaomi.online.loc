@@ -56,7 +56,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
         Route::delete('/{product}', ['uses' => 'ProductsController@delete', 'as' => 'admin.products.delete']);
     });
-
+    /**
+     *  Загрузка прайса для массовый выгрузки товара на сайт
+     */
+    Route::group(['prefix' => 'loadproducts', 'namespace' => 'Admin'], function () {
+        //admin
+        Route::get('/', ['uses' => 'LoadProductsController@create', 'as' => 'admin.loadproducts.create']);
+        Route::get('/uploadfile', 'LoadProductsController@index');
+        Route::post('/uploadfile', 'LoadProductsController@showUploadFile');
+    });
 
     //admin/services
     Route::group(['prefix' => 'services'], function () {

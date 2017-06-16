@@ -7,6 +7,8 @@
 @section('content')
     <div style="margin:0px 50px 0px 50px;">
         {!! Html::link(route('admin.products.create'),'Добавить товар') !!}
+        <br>
+        {!! Html::link(route('admin.loadproducts.create'),'Загрузить прайс') !!}
         @if($products)
             <table class="table table-hover table-striped">
                 <thead>
