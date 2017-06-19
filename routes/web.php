@@ -71,9 +71,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
      */
     Route::group(['prefix' => 'uploadfile', 'namespace' => 'Admin'], function () {
         //admin
-        Route::get('/', ['uses' => 'LoadProductsController@create', 'as' => 'admin.uploadfile.create']);
-        Route::get('/uploadfile', 'UploadFileController@index');
-        Route::post('/uploadfile', 'UploadFileController@showUploadFile');
+        Route::get('/', ['uses' => 'UploadFileController@index', 'as' => 'admin.uploadfile.index']);
+        Route::post('/uploadfile', 'UploadFileController@uploadfile');
     });
 
 });

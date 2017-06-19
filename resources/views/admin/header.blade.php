@@ -23,7 +23,7 @@
           </a>
 		</li>
 
-          <li><a href="{{route('admin.uploadfile.create')}}">
+          <li><a href="{{route('admin.uploadfile.index')}}">
           <h5>Прайс</h5>
           </a>
 		</li>

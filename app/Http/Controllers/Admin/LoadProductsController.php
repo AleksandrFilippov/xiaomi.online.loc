@@ -34,8 +34,7 @@ class LoadProductsController extends Controller
     /**
      * логика загрузки прайса
      */
-    public
-    function showUploadFile(Request $request)
+    public function showUploadFile(Request $request)
     {
         $file->move($destinationPath, $file->getClientOriginalName());
     }
