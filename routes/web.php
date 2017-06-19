@@ -69,9 +69,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     /**
      *  Загрузка прайса для скачивания с сайта
      */
-    Route::group(['prefix' => 'uploadfile', 'namespace' => 'Admin'], function () {
+    Route::group(['namespace' => 'Admin'], function () {
         //admin
-        Route::get('/', ['uses' => 'UploadFileController@index', 'as' => 'admin.uploadfile.index']);
+        Route::get('/upload', ['uses' => 'UploadFileController@index', 'as' => 'admin.uploadfile.index']);
         Route::post('/uploadfile', 'UploadFileController@uploadfile');
     });
 

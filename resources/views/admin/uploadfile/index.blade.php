@@ -10,7 +10,7 @@
         echo Form::open(array('url' => '/uploadfile', 'files' => 'true'));
         echo 'Выбери прайс для загрузки.';
         echo Form::file('image');
-        echo Form::submit('Upload File');
+        echo Form::submit('Загрузить прайс');
         echo Form::close();
         ?>
     </div>
