@@ -128,9 +128,7 @@ class ProductsController extends Controller
      */
     public function delete(Request $request, Product $product)
     {
-        if ($request->isMethod('delete')) {
-            $product->delete();
-            return redirect()->route('admin.products.index')->with('status', 'Товар удален');
-        }
+        $product->delete();
+        return redirect()->route('admin.products.index')->with('status', 'Товар удален');
     }
 }
