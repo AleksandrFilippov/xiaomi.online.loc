@@ -30,7 +30,7 @@ class UploadFileController extends Controller
         $file = $request->file('image');
 
         //Move Uploaded File
-        $destinationPath = 'assets\xls';
+        $destinationPath = public_path('assets\xls');
         $file->move($destinationPath, $file->getClientOriginalName());
 
         return redirect()->route('admin.uploadfile.index')->with('status', 'Прайс загружен');
