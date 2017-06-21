@@ -16,7 +16,10 @@ Route::group([], function () {
 });
 
 //admin/service
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(/**
+ *
+ */
+    ['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     //admin
     Route::get('/', function () {
@@ -71,8 +74,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
      */
     Route::group(['namespace' => 'Admin'], function () {
         //admin
-        Route::get('/upload', ['uses' => 'UploadFileController@index', 'as' => 'admin.uploadfile.index']);
-        Route::post('/uploadfile', 'UploadFileController@uploadfile');
+        Route::get('/upload', ['uses' => 'UploadFileController@index', 'as' => 'admin.upload.index']);
+        Route::post('/', ['uses' => 'UploadFileController@index', 'as' => 'uploadfile']);
     });
 
 });
