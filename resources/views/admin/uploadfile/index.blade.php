@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="wrapper container-fluid">
-        {!! Form::open(['url' => route('uploadfile'),'class'=>'form-horizontal','method'=>'POST', 'files' => true]) !!}
+        {!! Form::open(['url' => route('uploadprice'),'class'=>'form-horizontal','method'=>'POST', 'files' => true]) !!}
         <div class="form-group">
             {!! Form::label('images', 'Файл должен иметь название Price.xls',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
