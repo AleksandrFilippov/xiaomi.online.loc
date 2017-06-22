@@ -75,7 +75,7 @@ Route::group(/**
     Route::group(['namespace' => 'Admin'], function () {
         //admin
         Route::get('/upload', ['uses' => 'UploadFileController@index', 'as' => 'admin.upload.index']);
-        Route::post('/', ['uses' => 'UploadFileController@index', 'as' => 'uploadfile']);
+        Route::post('/upload', ['uses' => 'UploadFileController@upload', 'as' => 'uploadfile']);
     });
 
 });

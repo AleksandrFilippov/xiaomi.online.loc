@@ -25,7 +25,7 @@ class UploadFileController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function uploadfile(Request $request)
+    public function upload(Request $request)
     {
         $file = $request->file('image');
 
