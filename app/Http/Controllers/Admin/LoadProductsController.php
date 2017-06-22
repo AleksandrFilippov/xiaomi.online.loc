@@ -22,19 +22,9 @@ class LoadProductsController extends Controller
     }
 
     /**
-     *
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function index()
-    {
-        return view('uploadfile');
-    }
-
-    /**
      * логика загрузки прайса
      */
-    public function showUploadFile(Request $request)
+    public function UploadFile(Request $request)
     {
         $file->move($destinationPath, $file->getClientOriginalName());
     }

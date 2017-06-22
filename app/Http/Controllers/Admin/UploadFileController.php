@@ -5,14 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-/**
- * Страница формы загрузки прайса
- *
- * Class UploadFileController
- * @package App\Http\Controllers
- */
 class UploadFileController extends Controller
 {
+    /**
+     * Страница формы загрузки прайса
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $data = [

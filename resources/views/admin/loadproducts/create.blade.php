@@ -5,13 +5,19 @@
 @endsection
 
 @section('content')
-    <div style="margin:0px 50px 0px 50px;">
-        <?php
-        echo Form::open(array('url' => '/uploadfile', 'files' => 'true'));
-        echo 'Выбери прайс для загрузки.';
-        echo Form::file('image');
-        echo Form::submit('Загрузить');
-        echo Form::close();
-        ?>
+    <div class="wrapper container-fluid">
+        {!! Form::open(['url' => route('uploadfile'),'class'=>'form-horizontal','method'=>'POST', 'files' => true]) !!}
+        <div class="form-group">
+            {!! Form::label('images', 'Загрузка товара на сайт',['class'=>'col-xs-2 control-label']) !!}
+            <div class="col-xs-8">
+                {!! Form::file('images', ['class' => 'filestyle','data-buttonText'=>'Выберите прайс','data-buttonName'=>"btn-primary",'data-placeholder'=>"Файла нет"]) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+                {!! Form::button('Загрузить', ['class' => 'btn btn-primary','type'=>'submit']) !!}
+            </div>
+        </div>
+        {!! Form::close() !!}
     </div>
 @endsection

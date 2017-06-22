@@ -65,8 +65,7 @@ Route::group(/**
     Route::group(['prefix' => 'loadproducts', 'namespace' => 'Admin'], function () {
         //admin
         Route::get('/', ['uses' => 'LoadProductsController@create', 'as' => 'admin.loadproducts.create']);
-        Route::get('/uploadfile', 'LoadProductsController@index');
-        Route::post('/uploadfile', 'LoadProductsController@showUploadFile');
+        Route::post('/uploadfile', ['uses' => 'LoadProductsController@uploadfile', 'as' => 'uploadfile']);
     });
 
     /**
