@@ -27,7 +27,7 @@ class UploadFileController extends Controller
      */
     public function upload(Request $request)
     {
-        $file = $request->file('image');
+        $file = $request->file('images');
 
         //Move Uploaded File
         $destinationPath = public_path('assets\xls');
