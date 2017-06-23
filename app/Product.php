@@ -26,4 +26,22 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    /**
+     * логика загрузки прайса в БД
+     *
+     * @param $exelData
+     * @return mixed
+     */
+    public static function postAdd($exelData)
+    {
+        $post = Import::create([
+            'article' => $exelData['article'],
+            'name' => $exelData['name'],
+            'images' => $exelData['images'],
+            'category_id' => $exelData['category_id'],
+            'price' => $exelData['price']
+        ]);
+        return $post;
+    }
 }

@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="wrapper container-fluid">
-        {!! Form::open(['url' => route('uploadfile'),'class'=>'form-horizontal','method'=>'POST', 'files' => true]) !!}
+        {!! Form::open(['url' => route('uploadFile'),'class'=>'form-horizontal','method'=>'POST', 'files' => true]) !!}
         <div class="form-group">
             {!! Form::label('images', 'Загрузка товара на сайт',['class'=>'col-xs-2 control-label']) !!}
             <div class="col-xs-8">
@@ -19,5 +19,7 @@
             </div>
         </div>
         {!! Form::close() !!}
+        {{ Form::label('file', 'Excel/XLS:') }}
+        {{ Form::file('file')}}
     </div>
 @endsection
