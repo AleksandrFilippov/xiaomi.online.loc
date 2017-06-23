@@ -40,12 +40,10 @@ class LoadProductsController extends Controller
                 //'article', 'name', 'images', 'category_id', 'price'
                 $value->article, $value->name, $value->images, $value->category_id, $value->price;
 
-                    $data = Product::postAdd($value);
+                $data = Product::postAdd($value);
+            }
+        })->get();
 
-			})->
-            get();
-
-            return redirect()->route('admin.loadproducts.create')->with('status', 'Прайс загружен');
-        }
+        return redirect()->route('admin.loadproducts.create')->with('status', 'Прайс загружен');
     }
 }
