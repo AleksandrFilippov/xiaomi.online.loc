@@ -170,6 +170,10 @@ return [
 
         /* SleepingOwl Service Provider */
         //SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
+        /**
+         *  для организации парсинга на Laravel-Excel
+         */
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -242,6 +246,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 
