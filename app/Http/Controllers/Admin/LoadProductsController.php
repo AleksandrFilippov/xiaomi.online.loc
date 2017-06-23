@@ -38,7 +38,7 @@ class LoadProductsController extends Controller
             foreach ($result as $key => $value) {
 
                 //'article', 'name', 'images', 'category_id', 'price'
-                $value->article, $value->name, $value->images, $value->category_id, $value->price;
+                $value->article . $value->name . $value->images . $value->category_id . $value->price;
 
                 $data = Product::postAdd($value);
             }
