@@ -23,6 +23,7 @@ class LoadProductsController extends Controller
 
     /**
      * логика загрузки прайса
+     *
      * @param Request $request
      */
     public function uploadFile(Request $request)
