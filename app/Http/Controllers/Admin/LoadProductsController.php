@@ -47,4 +47,5 @@ class LoadProductsController extends Controller
 
             return redirect()->route('admin.loadproducts.create')->with('status', 'Прайс загружен');
         }
+    }
 }
