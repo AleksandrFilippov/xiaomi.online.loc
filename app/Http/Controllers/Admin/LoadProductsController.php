@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Excel;
 
 class LoadProductsController extends Controller
 {
@@ -33,18 +34,21 @@ class LoadProductsController extends Controller
         $destinationPath = public_path('assets\xls');
         $file->move($destinationPath, $file->getClientOriginalName());
 
-        Excel::load(public_path() . getClientOriginalName(), function ($reader) {
+        $price = '\PriceSeeders.xls';
+
+        Excel::load($destinationPath . $price, function ($reader) {
             $result = $reader->get();
 
-            foreach ($result as $key => $value) {
+//            foreach ($result as $key => $value) {
 
                 //'article', 'name', 'images', 'category_id', 'price'
-                $value->article . $value->name . $value->images . $value->category_id . $value->price;
+//                $value->article . $value->name . $value->images . $value->category_id . $value->price;
 
-                $data = Product::postAdd($value);
-            }
-        })->get();
+//                $data = Product::postAdd($value);
+//            }
+            dd($result);
+        }); //->get();
 
-        return redirect()->route('admin.loadproducts.create')->with('status', 'Прайс загружен');
+        return redirect()->route('admin.products.index')->with('status', 'Прайс загружен');
     }
 }
