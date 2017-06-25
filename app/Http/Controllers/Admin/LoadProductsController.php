@@ -37,17 +37,12 @@ class LoadProductsController extends Controller
         $price = '\PriceSeeders.xls';
 
         Excel::load($destinationPath . $price, function ($reader) {
-            $result = $reader->get();
+            $result = $reader->all();
+            $reader->dd();
 
-//            foreach ($result as $key => $value) {
+//           $data = Product::postAdd($value);
 
-                //'article', 'name', 'images', 'category_id', 'price'
-//                $value->article . $value->name . $value->images . $value->category_id . $value->price;
-
-//                $data = Product::postAdd($value);
-//            }
-            dd($result);
-        }); //->get();
+        })->get();
 
         return redirect()->route('admin.products.index')->with('status', 'Прайс загружен');
     }
