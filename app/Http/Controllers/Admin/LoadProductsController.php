@@ -38,12 +38,34 @@ class LoadProductsController extends Controller
 
         Excel::load($destinationPath . $price, function ($reader) {
             $result = $reader->all();
-            $reader->dd();
 
-//           $data = Product::postAdd($value);
+//            echo "<dl>";
+//            foreach ($result as $key => $value) {
+//                echo "<dt>$key:</dt>";
+//                echo "<dd>$value</dd>";
+//                echo "</dl>";
 
+//              $data = Product::postAdd($value);
+//              }
+
+            foreach ($result as $key => $value) {
+                if ($key->getTitle() === 'article') {
+                    Category::truncate();
+                    foreach ($result as $row) {
+                        $category = Product::create([
+                            'id' => $row->id,
+                            'article' => $row->article,
+                            'name' => $row->name,
+                            'images' => $row->images,
+                            'category_id' => $row->category_id,
+                            'price' => $row->price,
+                        ]);
+                    }
+                    dd($key->getTitle());
+                }
+            }
         })->get();
 
-        return redirect()->route('admin.products.index')->with('status', 'Прайс загружен');
+//        return redirect()->route('admin.products.index')->with('status', 'Прайс загружен');
     }
 }
